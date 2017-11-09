@@ -6,12 +6,14 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 )
 
 // var limiter *rate.Limiter
 
 func main() {
+	corsObj := handlers.AllowedOrigins([]string{"*"})
 	// limiter = rate.NewLimiter(config.RateLimit, config.RateLimitBurst)
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", index)
@@ -21,7 +23,7 @@ func main() {
 	router.HandleFunc("/depget", index)
 	router.HandleFunc("/env", index)
 	log.Printf("Serving on :8080")
-	log.Fatal(http.ListenAndServe(":8080", router))
+	log.Fatal(http.ListenAndServe(":8080", handlers.CORS(corsObj)(router)))
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
