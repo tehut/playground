@@ -23,31 +23,6 @@ class FileTree
     @hash.to_json
   end
 
-  def to_html(hash=@hash, name='root')
-    html = ""
-    html << "<ul>"
-    html << "<li>" << name << "</li>"
-    if hash
-      hash.each do |key, val|
-        if !val
-          html << "<li>" << key << "</li>"
-        else
-          html << "<li>" << self.to_html(val["children"], key) << "</li>"
-        end
-      end
-    end
-    html << "</ul>"
-    html
-  end
-
-  def to_s
-    @hash.to_s
-  end
-
-  def to_h
-    @hash
-  end
-
 
   private
 

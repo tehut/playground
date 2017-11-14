@@ -7,6 +7,7 @@ def readhash(hash)
   end
   return hash
 end
+
 def get_file_as_string(filename)
   # filename = "/Users/tehut/test/" + filename
   data = ''

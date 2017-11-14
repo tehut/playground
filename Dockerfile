@@ -1,0 +1,12 @@
+FROM alpine:3.6
+RUN apk add --no-cache ca-certificates
+
+ENV USER heptio
+ENV HTTP_ADDR :8080
+ENV HTTP_DRAIN_INTERVAL 1s
+ENV COOKIE_SECRET xpawQ5mWT0M3IoTY
+
+
+
+
+EXPOSE 8080
